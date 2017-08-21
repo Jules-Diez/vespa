@@ -11,7 +11,7 @@ class SimpleTransformer:
     def __init__(self, mean=[128, 128, 128]):
         self.mean = np.array(mean, dtype=np.float32)
         self.scale = 1.0
-	self.raw_scale = 1.0
+        self.raw_scale = 1.0
 
     def set_mean(self, mean):
         """
@@ -26,10 +26,10 @@ class SimpleTransformer:
         self.scale = scale
 
     def set_raw_scale(self, raw_scale):
-	"""
-	set the data scaling for subtracting the mean
-	"""
- 	self.raw_scale = raw_scale
+        """
+        set the data scaling for subtracting the mean
+        """
+        self.raw_scale = raw_scale
 
     def preprocess(self, im):
         """
@@ -39,7 +39,7 @@ class SimpleTransformer:
 
         im = np.float32(im)
         im = im[:, :, ::-1]  # change to BGR
-	im *= self.raw_scale
+        im *= self.raw_scale
         im -= self.mean
         im *= self.scale
         im = im.transpose((2, 0, 1))
